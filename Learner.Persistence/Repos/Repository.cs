@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Learner.Application.Contracts.Repos;
 using Learner.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Learner.Persistence.Repos
 {
@@ -19,9 +20,11 @@ namespace Learner.Persistence.Repos
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var result = await context.Set<T>().ToListAsync();
+
+            return result;
         }
 
         public Task<List<T>> GetAsync(Expression<Func<T, bool>> predicate)
