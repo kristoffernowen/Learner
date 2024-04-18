@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
 using Learner.Application.Features.HandleExercises.Commands.Create;
+using Learner.Application.Features.HandleExercises.Queries.GetExerciseById;
+using Learner.Application.Features.HandleExercises.Queries.GetExercises;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +28,22 @@ namespace Learner.Api.Controllers
             var result = await mediator.Send(request);
 
             return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var result = await mediator.Send(new GetExercisesQuery());
+
+            return result != null ? Ok(result) : NotFound();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var result = await mediator.Send(new GetExerciseByIdQuery(id));
+
+            return result != null ? Ok(result) : NotFound();
         }
     }
 }
