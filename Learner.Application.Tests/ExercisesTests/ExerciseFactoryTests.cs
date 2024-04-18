@@ -3,7 +3,7 @@ using Learner.Application.Features.HandleExercises.Commands.Create;
 using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Input;
 using Shouldly;
 
-namespace Learner.Application.Tests
+namespace Learner.Application.Tests.ExercisesTests
 {
     public class ExerciseFactoryTests
     {

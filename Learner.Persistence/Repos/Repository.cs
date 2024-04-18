@@ -15,9 +15,11 @@ namespace Learner.Persistence.Repos
             return result.Entity;
         }
 
-        public Task<T> GetByIdAsync(string id)
+        public virtual async Task<T?> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var result = await context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+
+            return result;
         }
 
         public async Task<List<T>> GetAllAsync()
