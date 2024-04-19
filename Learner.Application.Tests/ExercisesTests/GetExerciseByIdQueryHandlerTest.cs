@@ -4,7 +4,7 @@ using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
 using Shouldly;
 
-namespace Learner.Application.Tests.Exercises
+namespace Learner.Application.Tests.ExercisesTests
 {
     public class GetExerciseByIdQueryHandlerTest
     {
