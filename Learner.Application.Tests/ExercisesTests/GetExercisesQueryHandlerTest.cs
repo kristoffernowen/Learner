@@ -5,7 +5,7 @@ using Learner.Domain.Models;
 using Moq;
 using Shouldly;
 
-namespace Learner.Application.Tests.Exercises
+namespace Learner.Application.Tests.ExercisesTests
 {
     public class GetExercisesQueryHandlerTest
     {

@@ -1,9 +1,7 @@
-﻿namespace Learner.Application.Features.HandleExercises.Queries.GetExerciseById.Dtos;
+﻿using Learner.Application.Features.BaseDtos;
 
-public class GetExerciseByIdFactObjectOutputDto
+namespace Learner.Application.Features.HandleExercises.Queries.GetExerciseById.Dtos;
+
+public class GetExerciseByIdFactObjectOutputDto : GetExerciseByIdFactObjectBaseDto<GetExerciseByIdFactBaseDtoOutputDto>
 {
-    public string Name { get; set; } = null!;
-    public string Id { get; set; } = null!;
-    public string ExerciseId { get; set; } = null!;
-    public List<GetExerciseByIdFactOutputDto> Facts { get; set; } = [];
 }
