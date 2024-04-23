@@ -12,10 +12,10 @@ public class StartExerciseQueryHandler(IExerciseRepository exerciseRepository, I
         var exercise = await exerciseRepository.GetByIdAsync(request.Id);
 
         if (exercise == null) return null;
-        
-        exercise = SetFactValuesToEmptyUtility.SetToEmpty(exercise);
 
         var exerciseDto = mapper.Map<GetExerciseWithoutAnswersOutputDto>(exercise);
+        
+        exerciseDto = SetFactValuesToEmptyUtility.SetToEmpty(exerciseDto);
 
         return exerciseDto;
     }

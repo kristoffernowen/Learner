@@ -2,6 +2,6 @@
 
 namespace Learner.Application.Features.HandleExercises.Queries.GetExerciseById.Dtos;
 
-public class GetExerciseByIdFactObjectOutputDto : GetExerciseByIdFactObjectBaseDto<GetExerciseByIdFactBaseDtoOutputDto>
+public class GetExerciseByIdFactObjectOutputDto : GetExerciseByIdFactObjectBaseDto<GetExerciseByIdFactOutputDto>
 {
 }
