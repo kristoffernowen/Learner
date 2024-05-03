@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Learner.Application.Contracts.Repos;
 using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
-using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
 using Learner.Domain.Models;
+using Learner.Domain.Models.Results;
 using MediatR;
 
 namespace Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers;
@@ -39,7 +39,7 @@ public class CheckAnswersRequestHandler(IExerciseRepository exorciseRepository, 
 
         var resultsPerFactList = CompareAnswersUtility.FreeTextComparison(request.AnswersPerFact, listWithCorrectAnswers);
 
-        var resultsPerFactObject = GroupResultIntoFactObjects(resultsPerFactList);
+        var resultsPerFactObject = GroupResultIntoFactObjects(resultsPerFactList, exerciseWithRightAnswers);
 
         var result = GroupIntoResultPerExercise(resultsPerFactObject);
 
@@ -57,7 +57,7 @@ public class CheckAnswersRequestHandler(IExerciseRepository exorciseRepository, 
         return result;
     }
 
-    private List<ResultPerFactObject> GroupResultIntoFactObjects(List<ResultPerFact> resultsPerFacts)
+    private List<ResultPerFactObject> GroupResultIntoFactObjects(List<ResultPerFact> resultsPerFacts, Exercise exerciseToExtractNames)
     {
         var perFactObjects = (from fact in resultsPerFacts
             group fact by fact.FactObjectId
@@ -65,6 +65,7 @@ public class CheckAnswersRequestHandler(IExerciseRepository exorciseRepository, 
             select new ResultPerFactObject()
             {
                 Id = factObject.Key,
+                Name = (exerciseToExtractNames.FactObjects.Single(x => x.Id == factObject.Key)).Name,
                 PerFacts = factObject.Where(x => x.FactObjectId == factObject.Key).ToList()
             }).ToList();
         return perFactObjects;

@@ -1,4 +1,4 @@
-﻿namespace Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
+﻿namespace Learner.Domain.Models.Results;
 
 public class ResultPerFact
 {
@@ -7,4 +7,5 @@ public class ResultPerFact
     public string GivenAnswer { get; set; } = null!;
     public string CorrectAnswer { get; set; } = null!;
     public bool IsCorrect { get; set; }
+    public string FactName { get; set; } = null!;
 }

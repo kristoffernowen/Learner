@@ -1,4 +1,4 @@
-﻿namespace Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
+﻿namespace Learner.Domain.Models.Results;
 
 public class ResultPerExercise
 {

@@ -1,6 +1,6 @@
 ﻿using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
-using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
 using Learner.Domain.Models;
+using Learner.Domain.Models.Results;
 
 namespace Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers;
 
@@ -15,6 +15,9 @@ public class CompareAnswersUtility
             var factResult = new ResultPerFact()
             {
                 Id = inputDto.Id,
+                FactName = (from rightAnswer in correctAnswers
+                    where rightAnswer.Id == inputDto.Id
+                    select rightAnswer.FactName).First(),
                 FactObjectId = inputDto.FactObjectId,
                 CorrectAnswer = (from rightAnswer in correctAnswers
                     where rightAnswer.Id == inputDto.Id

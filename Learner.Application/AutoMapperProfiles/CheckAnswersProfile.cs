@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
-using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
+using Learner.Domain.Models.Results;
 
 namespace Learner.Application.AutoMapperProfiles
 {

@@ -2,15 +2,30 @@
 using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
 using Learner.Application.Features.DoFreeTextExercise.Queries.StartExercise.Dtos;
 using Learner.Application.Features.HandleExercises.Queries.GetExerciseById.Dtos;
-using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
+using Learner.Application.Features.HandleExercises.Queries.GetExercises;
 using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks.MockMapperProfiles;
+using Learner.Domain.Models.Results;
 using Moq;
 
 namespace Learner.Application.Tests.Mocks
 {
     public class MockMapper
     {
+        public static Mock<IMapper> GetMockMapperForGetExercisesRequestHandlerTest()
+        {
+            var exercisesList = ExercisesFixture.GetExercises();
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(x => x.Map<List<GetExercisesOutputDto>>(exercisesList))
+                .Returns([
+                    new GetExercisesOutputDto()
+                        {Id = Guid.NewGuid().ToString(), Name = "Mock output"},
+
+                    new GetExercisesOutputDto()
+                        {Id = Guid.NewGuid().ToString(), Name = "Mock output 2"}
+                ]);
+            return mapper;
+        }
         public static Mock<IMapper> GetMockMapperForGetExerciseByIdRequestHandlerTest(string id)
         {
             var exerciseList = ExercisesFixture.GetExercises();

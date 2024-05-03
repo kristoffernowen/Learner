@@ -1,4 +1,4 @@
-﻿using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
+﻿using Learner.Domain.Models.Results;
 
 namespace Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
 

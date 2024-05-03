@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Learner.Application.Contracts.Repos;
-using Learner.Application.Features.HandleExercises.Queries.GetExercises;
-using Learner.Domain.Models;
-using Moq;
+﻿using Learner.Application.Features.HandleExercises.Queries.GetExercises;
+using Learner.Application.Tests.Mocks;
 using Shouldly;
 
 namespace Learner.Application.Tests.ExercisesTests
@@ -14,21 +11,10 @@ namespace Learner.Application.Tests.ExercisesTests
 
         public GetExercisesQueryHandlerTest()
         {
-            Mock<IExerciseRepository> mockExerciseRepo = new();
-            Mock<IMapper> mockMapper = new();
+            var mockExerciseRepo = MockExerciseRepo.GetExercisesRepo();
+            var mockMapper = MockMapper.GetMockMapperForGetExercisesRequestHandlerTest();
             _request = new GetExercisesQuery();
             _handler = new GetExercisesQueryHandler(mockExerciseRepo.Object, mockMapper.Object);
-            var listOfExercisesForMock = new List<Exercise>();
-            mockExerciseRepo.Setup(x => x.GetAllAsync()).ReturnsAsync(listOfExercisesForMock);
-            mockMapper.Setup(x => x.Map<List<GetExercisesOutputDto>>(listOfExercisesForMock))
-                .Returns(
-                [
-                    new GetExercisesOutputDto()
-                        {Id = Guid.NewGuid().ToString(), Name = "Mock output"},
-
-                    new GetExercisesOutputDto()
-                        {Id = Guid.NewGuid().ToString(), Name = "Mock output 2"}
-                ]);
         }
 
         [Fact]

@@ -17,5 +17,25 @@ namespace Learner.Application.Tests.Mocks
 
             return mockExerciseRepo;
         }
+
+        public static Mock<IExerciseRepository> GetExercisesRepo()
+        {
+            var listOfExercises = ExercisesFixture.GetExercises();
+
+            Mock<IExerciseRepository> mockExerciseRepo = new();
+
+            mockExerciseRepo.Setup(x => x.GetAllAsync()).ReturnsAsync(listOfExercises);
+
+            return mockExerciseRepo;
+        }
+
+        public static Mock<IExerciseRepository> DeleteExerciseRepo(string id)
+        {
+            Mock<IExerciseRepository> mockRepository = new();
+
+            mockRepository.Setup(x => x.DeleteAsync(id)).Returns(Task.CompletedTask);
+
+            return mockRepository;
+        }
     }
 }

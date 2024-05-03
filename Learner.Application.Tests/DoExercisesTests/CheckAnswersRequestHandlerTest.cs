@@ -2,10 +2,10 @@
 using Learner.Application.Contracts.Repos;
 using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers;
 using Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers.Dtos;
-using Learner.Application.Tests.DoExercisesTests.CheckAnswersHelpers.Result;
 using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
 using Learner.Domain.Models;
+using Learner.Domain.Models.Results;
 using Moq;
 using Shouldly;
 
