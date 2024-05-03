@@ -1,4 +1,5 @@
-﻿using Learner.Application.Tests.Mocks;
+﻿using Learner.Application.Features.HandleExercises.Delete;
+using Learner.Application.Tests.Mocks;
 using Moq;
 
 namespace Learner.Application.Tests.ExercisesTests.DeleteExerciseTest

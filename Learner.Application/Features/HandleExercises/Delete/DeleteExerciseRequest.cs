@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace Learner.Application.Tests.ExercisesTests.DeleteExerciseTest;
+namespace Learner.Application.Features.HandleExercises.Delete;
 
 public record DeleteExerciseRequest(string Id) : IRequest<Unit>;

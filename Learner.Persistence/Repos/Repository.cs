@@ -39,9 +39,15 @@ namespace Learner.Persistence.Repos
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            var entity = await context.Set<T>().FindAsync(id);
+            if (entity != null)
+            {
+                context.Set<T>().Remove(entity);
+                await context.SaveChangesAsync();
+            }
         }
+        // if i return Task<bool> i can check for success and maintain feedback 
     }
 }
