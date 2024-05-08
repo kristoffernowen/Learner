@@ -2,7 +2,7 @@
 
 namespace Learner.Application.Features.DoFreeTextExercise.Queries.StartExercise.Dtos
 {
-    public class GetExerciseWithoutAnswersFactBaseDtoOutputDto : GetExerciseByIdFactBaseDto
+    public class GetExerciseWithoutAnswersFactOutputDto : GetExerciseByIdFactBaseDto
     {
         // public string Id { get; set; } = null!;
         // public string FactObjectId { get; set; } = null!;

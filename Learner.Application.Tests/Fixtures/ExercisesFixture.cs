@@ -125,12 +125,29 @@ namespace Learner.Application.Tests.Fixtures
             }
         ];
 
+        private static readonly List<Exercise> ExercisesForDelete = new List<Exercise>()
+        {
+            new Exercise()
+            {
+                Id = "deleteMe"
+            },
+            new Exercise()
+            {
+                Id = "doNotDeleteMe"
+            }
+        };
+
         public static string IdOne => "93805e57-572b-48dc-87d9-44db3e3ea6ef";
         public static string IdTwo => "2dbf88fc-0f15-4dd7-88b9-56dbccadb762";
 
         public static List<Exercise> GetExercises()
         {
             return Exercises;
+        }
+
+        public static List<Exercise> GetExercisesForDelete()
+        {
+            return ExercisesForDelete;
         }
     }
 

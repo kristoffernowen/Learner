@@ -10,13 +10,14 @@ namespace Learner.Application.Tests.ExercisesTests
     {
         private readonly GetExerciseByIdQuery _request;
         private readonly GetExerciseByIdQueryHandler _handler;
+        private readonly string _id;
 
         public GetExerciseByIdQueryHandlerTest()
         {
-            var id = ExercisesFixture.IdOne;
-            var mockExerciseRepo = MockExerciseRepo.GetExerciseByIdRepo(id);
-            var mockMapper = MockMapper.GetMockMapperForGetExerciseByIdRequestHandlerTest(id);
-            _request = new GetExerciseByIdQuery(id);
+            _id = ExercisesFixture.IdOne;
+            var mockExerciseRepo = MockExerciseRepo.GetExerciseByIdRepo(_id);
+            var mockMapper = MockMapper.GetMockMapperForGetExerciseByIdRequestHandlerTest(_id);
+            _request = new GetExerciseByIdQuery(_id);
             _handler = new GetExerciseByIdQueryHandler(mockExerciseRepo.Object, mockMapper.Object);
         }
 
@@ -26,7 +27,7 @@ namespace Learner.Application.Tests.ExercisesTests
             var result = await _handler.Handle(_request, CancellationToken.None);
 
             result.ShouldBeOfType(typeof(GetExerciseByIdOutputDto));
-            result.Id.ShouldBe(ExercisesFixture.IdOne); 
+            result.Id.ShouldBe(_id); 
         }
     }
 }

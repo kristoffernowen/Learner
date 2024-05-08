@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Learner.Application.Features.HandleExercises.Commands.Create;
+using Learner.Application.Features.HandleExercises.Delete;
 using Learner.Application.Features.HandleExercises.Queries.GetExerciseById;
 using Learner.Application.Features.HandleExercises.Queries.GetExercises;
 using MediatR;
@@ -44,6 +45,14 @@ namespace Learner.Api.Controllers
             var result = await mediator.Send(new GetExerciseByIdQuery(id));
 
             return result != null ? Ok(result) : NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await mediator.Send(new DeleteExerciseRequest(id));
+
+            return Ok("But no validation of deletion yet");
         }
     }
 }

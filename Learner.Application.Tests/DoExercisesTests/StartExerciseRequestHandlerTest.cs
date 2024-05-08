@@ -32,8 +32,30 @@ namespace Learner.Application.Tests.DoExercisesTests
                 exercise!.FactObjects.SelectMany(x => x.Facts
                     .Select(f => new string(f.FactValue)))
                     .ToList();
+            var exerciseDto = new GetExerciseWithoutAnswersOutputDto()
+            {
+                Id = exercise.Id,
+                Name = exercise.Name,
+                FactObjects = exercise.FactObjects
+                    .Select(x => new GetExerciseWithoutAnswersFactObjectOutputDto()
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        ExerciseId = x.ExerciseId,
+                        Facts = x.Facts
+                            .Select(f => new GetExerciseWithoutAnswersFactOutputDto()
+                        {
+                            Id = f.Id,
+                            FactObjectId = f.FactObjectId,
+                            FactName = f.FactName,
+                            FactType = f.FactType,
+                            FactValue = f.FactValue
+                        }).ToList()
+                    }).ToList()
+            };
+            
             //Act
-            var result = SetFactValuesToEmptyUtility.SetToEmpty(exercise);
+            var result = SetFactValuesToEmptyUtility.SetToEmpty(exerciseDto);
 
             //Assert
             foreach (var fact in result.FactObjects.SelectMany(x => x.Facts.Select(f => f)))

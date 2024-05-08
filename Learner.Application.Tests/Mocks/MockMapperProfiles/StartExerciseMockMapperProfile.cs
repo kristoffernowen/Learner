@@ -13,13 +13,13 @@ namespace Learner.Application.Tests.Mocks.MockMapperProfiles
                 {
                     new GetExerciseWithoutAnswersFactObjectOutputDto()
                     {
-                        Facts = new List<GetExerciseWithoutAnswersFactBaseDtoOutputDto>()
+                        Facts = new List<GetExerciseWithoutAnswersFactOutputDto>()
                         {
-                            new GetExerciseWithoutAnswersFactBaseDtoOutputDto()
+                            new GetExerciseWithoutAnswersFactOutputDto()
                             {
                                 FactValue = "Fact One"
                             },
-                            new GetExerciseWithoutAnswersFactBaseDtoOutputDto()
+                            new GetExerciseWithoutAnswersFactOutputDto()
                             {
                                 FactValue = "Fact Two"
                             }
@@ -27,13 +27,13 @@ namespace Learner.Application.Tests.Mocks.MockMapperProfiles
                     },
                     new GetExerciseWithoutAnswersFactObjectOutputDto()
                     {
-                        Facts = new List<GetExerciseWithoutAnswersFactBaseDtoOutputDto>()
+                        Facts = new List<GetExerciseWithoutAnswersFactOutputDto>()
                         {
-                            new GetExerciseWithoutAnswersFactBaseDtoOutputDto()
+                            new GetExerciseWithoutAnswersFactOutputDto()
                             {
                                 FactValue = "Fact Three"
                             },
-                            new GetExerciseWithoutAnswersFactBaseDtoOutputDto()
+                            new GetExerciseWithoutAnswersFactOutputDto()
                             {
                                 FactValue = "Fact Four"
                             }
