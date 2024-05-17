@@ -18,7 +18,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("learner", policyBuilder =>
         {
-            policyBuilder.WithOrigins($"{builder.Configuration.GetValue<string>("allowOrigin")}");
+            policyBuilder.WithOrigins(
+                builder.Configuration.GetSection("allowOrigin").Get<string[]>()!
+                );
             policyBuilder.WithMethods("GET", "DELETE", "POST", "UPDATE");
             policyBuilder.WithHeaders(HeaderNames.ContentType);
         }
