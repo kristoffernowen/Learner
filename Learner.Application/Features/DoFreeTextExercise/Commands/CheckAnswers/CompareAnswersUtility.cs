@@ -7,7 +7,7 @@ namespace Learner.Application.Features.DoFreeTextExercise.Commands.CheckAnswers;
 public class CompareAnswersUtility
 {
     public static List<ResultPerFact> FreeTextComparison(IEnumerable<CheckAnswersFactInputDto> givenAnswers,
-        List<Fact> correctAnswers)
+        List<FactInObject> correctAnswers)
     {
         var resultPerFactList = new List<ResultPerFact>();
         foreach (var inputDto in givenAnswers)

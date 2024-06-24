@@ -15,6 +15,7 @@ namespace Learner.Persistence
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
             services.AddScoped<IFactObjectRepository, FactObjectRepository>();
             services.AddScoped<IFactRepository, FactRepository>();
+            services.AddScoped<ISingleFactExerciseRepository, SingleFactExerciseRepository>();
 
             return services;
         }

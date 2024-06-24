@@ -12,11 +12,11 @@ namespace Learner.Application.AutoMapperProfiles
         {
             CreateMap<CreateExerciseCommand, Exercise>();
             CreateMap<CreateExerciseFactObjectInputDto, FactObject>();
-            CreateMap<CreateExerciseFactInputDto, Fact>();
+            CreateMap<CreateExerciseFactInputDto, FactInObject>();
 
             CreateMap<Exercise, CreateExerciseOutputDto>();
             CreateMap<FactObject, CreateExerciseFactObjectOutputDto>();
-            CreateMap<Fact, CreateExerciseFactOutputDto>();
+            CreateMap<FactInObject, CreateExerciseFactOutputDto>();
         }
     }
 }

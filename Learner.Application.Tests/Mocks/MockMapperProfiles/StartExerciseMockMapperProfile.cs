@@ -17,11 +17,11 @@ namespace Learner.Application.Tests.Mocks.MockMapperProfiles
                         {
                             new GetExerciseWithoutAnswersFactOutputDto()
                             {
-                                FactValue = "Fact One"
+                                FactValue = "FactInObject One"
                             },
                             new GetExerciseWithoutAnswersFactOutputDto()
                             {
-                                FactValue = "Fact Two"
+                                FactValue = "FactInObject Two"
                             }
                         }
                     },
@@ -31,11 +31,11 @@ namespace Learner.Application.Tests.Mocks.MockMapperProfiles
                         {
                             new GetExerciseWithoutAnswersFactOutputDto()
                             {
-                                FactValue = "Fact Three"
+                                FactValue = "FactInObject Three"
                             },
                             new GetExerciseWithoutAnswersFactOutputDto()
                             {
-                                FactValue = "Fact Four"
+                                FactValue = "FactInObject Four"
                             }
                         }
                     }

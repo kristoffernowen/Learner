@@ -48,7 +48,7 @@ public class CheckAnswersRequestHandler(IExerciseRepository exorciseRepository, 
         return resultDto;
     }
 
-    private List<Fact> MakeListOfFactsWithTheCorrectAnswerForComparison(IEnumerable<FactObject> factObjects)
+    private List<FactInObject> MakeListOfFactsWithTheCorrectAnswerForComparison(IEnumerable<FactObject> factObjects)
     {
         var result = (from rightAnswer in factObjects
             from fact in rightAnswer.Facts

@@ -10,7 +10,7 @@ namespace Learner.Application.AutoMapperProfiles
         {
             CreateMap<Exercise, GetExerciseWithoutAnswersOutputDto>();
             CreateMap<FactObject, GetExerciseWithoutAnswersFactObjectOutputDto>();
-            CreateMap<Fact, GetExerciseWithoutAnswersFactOutputDto>();
+            CreateMap<FactInObject, GetExerciseWithoutAnswersFactOutputDto>();
         }
     }
 }

@@ -2,6 +2,6 @@
 
 namespace Learner.Application.Contracts.Repos;
 
-public interface IFactRepository : IRepository<Fact>
+public interface IFactRepository : IRepository<FactInObject>
 {
 }

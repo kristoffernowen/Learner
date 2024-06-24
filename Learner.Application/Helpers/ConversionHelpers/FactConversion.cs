@@ -6,7 +6,7 @@ namespace Learner.Application.Helpers.ConversionHelpers
     public static class FactConversion
     {
         private static readonly List<string> AllowedMeasures = ["mm", "cm", "dm", "m", "km", "g", "kg"];
-        public static bool CheckIfCanBeConvertedToIntWithApprovedMeasure(CreateExerciseFactInputDto dto)
+        public static bool CheckIfCanBeConvertedToIntWithApprovedMeasure(ICreateExerciseFactInputDto dto)
         {
             var intendedInt = GetIntFromFact(dto.FactValue);
             if (intendedInt == null)

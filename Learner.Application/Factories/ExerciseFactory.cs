@@ -43,11 +43,11 @@ namespace Learner.Application.Factories
             return factObject;
         }
 
-        private static Fact CreateFact(CreateExerciseFactInputDto dto, string factObjectId)
+        private static FactInObject CreateFact(CreateExerciseFactInputDto dto, string factObjectId)
         {
             var fact = dto.FactType switch
             {
-                "string" => new Fact()
+                "string" => new FactInObject()
                 {
                     Id = Guid.NewGuid().ToString(),
                     FactName = dto.FactName,
@@ -55,14 +55,14 @@ namespace Learner.Application.Factories
                     FactValue = dto.FactValue,
                     FactObjectId = factObjectId
                 },
-                "int" => new Fact
+                "int" => new FactInObject
                 {
                     Id = Guid.NewGuid().ToString(),
                     FactName = dto.FactName,
                     FactType = dto.FactType,
                     FactValue = FactConversion.CheckIfCanBeConvertedToIntWithApprovedMeasure(dto) ?
                         dto.FactValue :
-                        throw new ArgumentException("Value not allowed for Fact with FactType int," +
+                        throw new ArgumentException("Value not allowed for FactInObject with FactType int," +
                                                     " failed to convert to int number and string measure"),
                     FactObjectId = factObjectId
                 },

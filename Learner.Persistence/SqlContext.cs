@@ -7,6 +7,8 @@ namespace Learner.Persistence
     {
         public DbSet<Exercise> Exercises { get; set; } = null!;
         public DbSet<FactObject> FactObjects { get; set; } = null!;
-        public DbSet<Fact> Facts { get; set; } = null!;
+        public DbSet<FactInObject> Facts { get; set; } = null!;
+        public DbSet<SingleFactExercise> SingleFactExercises { get; set; } = null!;
+        public DbSet<SingleFact> SingleFacts { get; set; } = null!;
     }
 }

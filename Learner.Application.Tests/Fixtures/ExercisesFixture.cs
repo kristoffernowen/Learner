@@ -15,7 +15,7 @@ namespace Learner.Application.Tests.Fixtures
                     new FactObject()
                     {
                         Id = "dd026425-9209-4254-8d1b-28b43f78ca61",
-                        Name = "Fact Object One",
+                        Name = "FactInObject Object One",
                         ExerciseId = IdOne,
                         Facts =
                         [
@@ -23,7 +23,7 @@ namespace Learner.Application.Tests.Fixtures
                             {
                                 FactName = "Name",
                                 FactType = "string",
-                                FactValue = "Fact One",
+                                FactValue = "FactInObject One",
                                 Id = "178057a5-f00e-4b1f-a4d4-8ea3e57859bd",
                                 FactObjectId = "dd026425-9209-4254-8d1b-28b43f78ca61"
                             },
@@ -40,7 +40,7 @@ namespace Learner.Application.Tests.Fixtures
                     new FactObject()
                     {
                         Id = "d1854772-faa1-4f59-bc1f-8fcccc545efc",
-                        Name = "Fact Object Two",
+                        Name = "FactInObject Object Two",
                         ExerciseId = IdOne,
                         Facts =
                         [
@@ -48,7 +48,7 @@ namespace Learner.Application.Tests.Fixtures
                             {
                                 FactName = "Name",
                                 FactType = "string",
-                                FactValue = "Fact Two",
+                                FactValue = "FactInObject Two",
                                 Id = "2bfbf68e-50fc-4022-bfac-86dece465b8e",
                                 FactObjectId = "d1854772-faa1-4f59-bc1f-8fcccc545efc"
                             },
@@ -74,7 +74,7 @@ namespace Learner.Application.Tests.Fixtures
                     new FactObject()
                     {
                         Id = "ee46f0e1-6735-4b5a-9ec1-0c77a3e61fd1",
-                        Name = "Fact Object Three",
+                        Name = "FactInObject Object Three",
                         ExerciseId = IdTwo,
                         Facts =
                         [
@@ -82,7 +82,7 @@ namespace Learner.Application.Tests.Fixtures
                             {
                                 FactName = "Name",
                                 FactType = "string",
-                                FactValue = "Fact Three",
+                                FactValue = "FactInObject Three",
                                 Id = "178057a5-f00e-4b1f-a4d4-8ea3e57859bd",
                                 FactObjectId = "ee46f0e1-6735-4b5a-9ec1-0c77a3e61fd1"
                             },
@@ -99,7 +99,7 @@ namespace Learner.Application.Tests.Fixtures
                     new FactObject()
                     {
                         Id = "45348ea3-dbda-4cda-a8a8-4663fbbf9e72",
-                        Name = "Fact Object Four",
+                        Name = "FactInObject Object Four",
                         ExerciseId = IdTwo,
                         Facts =
                         [
@@ -107,7 +107,7 @@ namespace Learner.Application.Tests.Fixtures
                             {
                                 FactName = "Name",
                                 FactType = "string",
-                                FactValue = "Fact Four",
+                                FactValue = "FactInObject Four",
                                 Id = "4b5fed66-42df-4b89-aee3-dfcc3b388dd1",
                                 FactObjectId = "45348ea3-dbda-4cda-a8a8-4663fbbf9e72"
                             },

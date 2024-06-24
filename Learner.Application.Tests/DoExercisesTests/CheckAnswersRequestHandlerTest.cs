@@ -34,7 +34,7 @@ namespace Learner.Application.Tests.DoExercisesTests
                     {
                         Id = _exerciseWithRightAnswers.FactObjects[0].Facts[0].Id,
                         FactObjectId = _exerciseWithRightAnswers.FactObjects[0].Facts[0].FactObjectId,
-                        GivenAnswer = "Fact Four"  // wrong
+                        GivenAnswer = "FactInObject Four"  // wrong
                     },
                     new CheckAnswersFactInputDto()
                     {
@@ -46,7 +46,7 @@ namespace Learner.Application.Tests.DoExercisesTests
                     {
                         Id = _exerciseWithRightAnswers.FactObjects[1].Facts[0].Id,
                         FactObjectId = _exerciseWithRightAnswers.FactObjects[1].Facts[0].FactObjectId,
-                        GivenAnswer = "Fact Two"  // correct
+                        GivenAnswer = "FactInObject Two"  // correct
                     },
                     new CheckAnswersFactInputDto()
                     {
