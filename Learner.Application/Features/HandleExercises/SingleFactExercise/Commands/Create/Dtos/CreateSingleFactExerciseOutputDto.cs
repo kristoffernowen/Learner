@@ -1,4 +1,6 @@
-﻿namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+﻿using Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+
+namespace Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create.Dtos;
 
 public class CreateSingleFactExerciseOutputDto
 {

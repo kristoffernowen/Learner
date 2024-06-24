@@ -1,6 +1,6 @@
 ﻿using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Input;
 
-namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+namespace Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create.Dtos;
 
 public class CreateSingleFactExerciseFactInputDto : ICreateExerciseFactInputDto
 {

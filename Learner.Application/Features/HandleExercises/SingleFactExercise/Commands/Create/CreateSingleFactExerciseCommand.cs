@@ -1,6 +1,8 @@
-﻿using MediatR;
+﻿using Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create.Dtos;
+using Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+using MediatR;
 
-namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+namespace Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create;
 
 public class CreateSingleFactExerciseCommand : IRequest<CreateSingleFactExerciseOutputDto>, ICreateSingleFactExerciseInputDto
 {

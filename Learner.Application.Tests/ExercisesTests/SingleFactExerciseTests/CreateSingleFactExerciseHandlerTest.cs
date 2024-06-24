@@ -1,4 +1,6 @@
-﻿using Learner.Application.Tests.Mocks;
+﻿using Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create;
+using Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create.Dtos;
+using Learner.Application.Tests.Mocks;
 using Learner.Domain.Models;
 using Shouldly;
 
