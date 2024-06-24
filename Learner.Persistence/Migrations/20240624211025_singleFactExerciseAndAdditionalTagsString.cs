@@ -5,7 +5,7 @@
 namespace Learner.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class singleFactExercise : Migration
+    public partial class singleFactExerciseAndAdditionalTagsString : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Learner.Persistence.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20240624141027_singleFactExercise")]
-    partial class singleFactExercise
+    [Migration("20240624211025_singleFactExerciseAndAdditionalTagsString")]
+    partial class singleFactExerciseAndAdditionalTagsString
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
