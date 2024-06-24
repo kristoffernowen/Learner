@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Learner.Application.Contracts.Dtos;
+﻿using Learner.Application.Contracts.Dtos;
 using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Input;
 using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Output;
 using MediatR;

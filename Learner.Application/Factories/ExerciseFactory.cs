@@ -1,5 +1,6 @@
 ﻿using Learner.Application.Contracts.Dtos;
 using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Input;
+using Learner.Application.Helpers.ConversionHelpers;
 using Learner.Domain.Models;
 
 namespace Learner.Application.Factories
@@ -54,36 +55,21 @@ namespace Learner.Application.Factories
                     FactValue = dto.FactValue,
                     FactObjectId = factObjectId
                 },
-                "int" => new IntFact
+                "int" => new Fact
                 {
                     Id = Guid.NewGuid().ToString(),
                     FactName = dto.FactName,
                     FactType = dto.FactType,
-                    FactValue = dto.FactValue,
-                    IntValue = ExtractInt(dto.FactValue),
-                    MeasureUnit = dto.FactValue.Split(",").First(s => !int.TryParse(s, out var numResult)),
+                    FactValue = FactConversion.CheckIfCanBeConvertedToIntWithApprovedMeasure(dto) ?
+                        dto.FactValue :
+                        throw new ArgumentException("Value not allowed for Fact with FactType int," +
+                                                    " failed to convert to int number and string measure"),
                     FactObjectId = factObjectId
                 },
                 _ => throw new NotImplementedException()
             };
 
-            // var fact = new Fact()
-            // {
-            //     Id = Guid.NewGuid().ToString(),
-            //     FactName = dto.FactName,
-            //     FactType = dto.FactType,
-            //     FactValue = dto.FactValue,
-            //     FactObjectId = factObjectId
-            // };
-
             return fact;
-        }
-
-        private static int ExtractInt(string factValue)
-        {
-            var intString = factValue.Split(",").First(s => int.TryParse(s, out var numResult));
-            var isInt = int.TryParse(intString, out var numResult);
-            return isInt ? numResult : 0;
         }
     }
 }
