@@ -32,7 +32,7 @@ namespace Learner.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Exercises");
+                    b.ToTable("Exercises", (string)null);
                 });
 
             modelBuilder.Entity("Learner.Domain.Models.Fact", b =>
@@ -64,7 +64,7 @@ namespace Learner.Persistence.Migrations
 
                     b.HasIndex("FactObjectId");
 
-                    b.ToTable("Facts");
+                    b.ToTable("Facts", (string)null);
                 });
 
             modelBuilder.Entity("Learner.Domain.Models.FactObject", b =>
@@ -84,7 +84,7 @@ namespace Learner.Persistence.Migrations
 
                     b.HasIndex("ExerciseId");
 
-                    b.ToTable("FactObjects");
+                    b.ToTable("FactObjects", (string)null);
                 });
 
             modelBuilder.Entity("Learner.Domain.Models.Fact", b =>
