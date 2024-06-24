@@ -1,5 +1,6 @@
 ﻿using Learner.Application.Contracts.Dtos;
 using Learner.Application.Features.HandleExercises.Commands.Create.Dtos.Input;
+using Learner.Application.Helpers.ConversionHelpers;
 using Learner.Domain.Models;
 
 namespace Learner.Application.Factories
@@ -44,13 +45,28 @@ namespace Learner.Application.Factories
 
         private static Fact CreateFact(CreateExerciseFactInputDto dto, string factObjectId)
         {
-            var fact = new Fact()
+            var fact = dto.FactType switch
             {
-                Id = Guid.NewGuid().ToString(),
-                FactName = dto.FactName,
-                FactType = dto.FactType,
-                FactValue = dto.FactValue,
-                FactObjectId = factObjectId
+                "string" => new Fact()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FactName = dto.FactName,
+                    FactType = dto.FactType,
+                    FactValue = dto.FactValue,
+                    FactObjectId = factObjectId
+                },
+                "int" => new Fact
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FactName = dto.FactName,
+                    FactType = dto.FactType,
+                    FactValue = FactConversion.CheckIfCanBeConvertedToIntWithApprovedMeasure(dto) ?
+                        dto.FactValue :
+                        throw new ArgumentException("Value not allowed for Fact with FactType int," +
+                                                    " failed to convert to int number and string measure"),
+                    FactObjectId = factObjectId
+                },
+                _ => throw new NotImplementedException()
             };
 
             return fact;
