@@ -15,6 +15,8 @@ public class CreateSingleFactExerciseHandler(
 
         var persistedExercise = await singleFactExerciseRepository.CreateAsync(exercise);
 
-        return mapper.Map<CreateSingleFactExerciseOutputDto>(persistedExercise);
+        var dto = mapper.Map<CreateSingleFactExerciseOutputDto>(persistedExercise);
+
+        return dto;
     }
 }
