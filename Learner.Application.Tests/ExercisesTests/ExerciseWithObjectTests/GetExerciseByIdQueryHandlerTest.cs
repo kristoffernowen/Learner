@@ -4,7 +4,7 @@ using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
 using Shouldly;
 
-namespace Learner.Application.Tests.ExercisesTests
+namespace Learner.Application.Tests.ExercisesTests.ExerciseWithObjectTests
 {
     public class GetExerciseByIdQueryHandlerTest
     {
@@ -27,7 +27,7 @@ namespace Learner.Application.Tests.ExercisesTests
             var result = await _handler.Handle(_request, CancellationToken.None);
 
             result.ShouldBeOfType(typeof(GetExerciseByIdOutputDto));
-            result.Id.ShouldBe(_id); 
+            result.Id.ShouldBe(_id);
         }
     }
 }

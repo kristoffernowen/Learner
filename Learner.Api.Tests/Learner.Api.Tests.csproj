@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Learner.Api\Learner.Api.csproj" />
+    <ProjectReference Include="..\Learner.Application\Learner.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

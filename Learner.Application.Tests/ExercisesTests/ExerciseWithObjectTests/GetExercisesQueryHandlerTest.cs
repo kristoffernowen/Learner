@@ -2,7 +2,7 @@
 using Learner.Application.Tests.Mocks;
 using Shouldly;
 
-namespace Learner.Application.Tests.ExercisesTests
+namespace Learner.Application.Tests.ExercisesTests.ExerciseWithObjectTests
 {
     public class GetExercisesQueryHandlerTest
     {

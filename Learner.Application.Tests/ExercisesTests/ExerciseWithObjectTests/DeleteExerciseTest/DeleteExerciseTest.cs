@@ -2,7 +2,7 @@
 using Learner.Application.Tests.Mocks;
 using Moq;
 
-namespace Learner.Application.Tests.ExercisesTests.DeleteExerciseTest
+namespace Learner.Application.Tests.ExercisesTests.ExerciseWithObjectTests.DeleteExerciseTest
 {
     public class DeleteExerciseTest
     {
