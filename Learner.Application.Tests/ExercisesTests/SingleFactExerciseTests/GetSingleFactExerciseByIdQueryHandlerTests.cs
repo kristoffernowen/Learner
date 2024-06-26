@@ -1,8 +1,6 @@
-﻿using Learner.Application.Tests.Fixtures;
+﻿using Learner.Application.Features.HandleExercises.SingleFactExercise.Queries.GetById;
+using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
-using AutoMapper;
-using Learner.Application.Contracts.Repos;
-using MediatR;
 using Shouldly;
 
 namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests
@@ -47,37 +45,5 @@ namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests
                 fact.FactValue.ShouldNotBeNullOrWhiteSpace();
             }
         }
-    }
-
-    public class GetSingleFactExerciseByIdQueryHandler(ISingleFactExerciseRepository singleFactExerciseRepository,
-        IMapper mapper) : IRequestHandler<GetSingleFactExerciseByIdQuery, GetSingleFactExerciseByIdOutputDto>
-    {
-        public async Task<GetSingleFactExerciseByIdOutputDto> Handle(GetSingleFactExerciseByIdQuery request, CancellationToken cancellationToken)
-        {
-            var exercise = await singleFactExerciseRepository.GetByIdAsync(request.Id);
-            var dto = mapper.Map<GetSingleFactExerciseByIdOutputDto>(exercise);
-
-            return dto;
-        }
-    }
-
-    public record GetSingleFactExerciseByIdQuery(string Id) : IRequest<GetSingleFactExerciseByIdOutputDto>;
-
-    public class GetSingleFactExerciseByIdOutputDto
-    {
-        public string Id { get; set; } = null!;
-
-        public string Name { get; set; } = null!;
-        public List<GetSingleFactByIdOutputDto> Facts { get; set; } = [];
-    }
-
-    public class GetSingleFactByIdOutputDto
-    {
-        public string Id { get; set; } = null!;
-        public string SingleFactExerciseId { get; set; } = null!;
-        public string FactName { get; set; } = null!;
-        public string FactType { get; set; } = null!;
-        public string FactValue { get; set; } = null!;
-        public List<string> AdditionalTags { get; set; } = [];
     }
 }

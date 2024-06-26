@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Learner.Domain\Learner.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\HandleExercises\SingleFactExercise\Queries\" />
-  </ItemGroup>
-
 </Project>
