@@ -1,4 +1,5 @@
 ﻿using Learner.Application.Contracts.Repos;
+using Learner.Application.Tests.Fixtures;
 using Learner.Domain.Models;
 using Moq;
 
@@ -32,5 +33,14 @@ public class MockSingleFactExerciseRepo
         mockRepository.Setup(x => x.CreateAsync(new SingleFactExercise())).ReturnsAsync(returnExercise);
 
         return mockRepository;
+    }
+
+    public static Mock<ISingleFactExerciseRepository> GetAll()
+    {
+        var exercises = SingleFactExerciseFixture.GetExercises();
+        var mockRepo = new Mock<ISingleFactExerciseRepository>();
+        mockRepo.Setup(x => x.GetAllAsync()).ReturnsAsync(exercises);
+
+        return mockRepo;
     }
 }

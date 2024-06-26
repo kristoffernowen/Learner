@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Learner.Application.Features.HandleExercises.SingleFactExercise.Commands.Create.Dtos;
 using Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests;
+using Learner.Application.Tests.Fixtures;
 using Learner.Domain.Models;
 using Moq;
 
@@ -32,5 +33,18 @@ public class MockSingleFactExerciseMapper
                 }
             });
         return mapper;
+    }
+
+    public static Mock<IMapper> GetMockMapperForGetAllSingleFactExercisesTest()
+    {
+        var exercises = SingleFactExerciseFixture.GetExercises();
+        var dtos = exercises.Select(x =>
+            new GetSingleFactExercisesOutputDto {Id = x.Id, Name = x.Name}).ToList();
+
+        var mockMapper = new Mock<IMapper>();
+        mockMapper.Setup(x => x.Map<List<GetSingleFactExercisesOutputDto>>(It.IsAny<List<SingleFactExercise>>()))
+            .Returns(dtos);
+
+        return mockMapper;
     }
 }

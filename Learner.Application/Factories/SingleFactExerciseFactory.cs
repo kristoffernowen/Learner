@@ -2,7 +2,7 @@
 using Learner.Application.Helpers.ConversionHelpers;
 using Learner.Domain.Models;
 
-namespace Learner.Application.Tests.ExercisesTests.SingleFactExerciseTests
+namespace Learner.Application.Factories
 {
     public static class SingleFactExerciseFactory
     {
