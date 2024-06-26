@@ -43,4 +43,15 @@ public class MockSingleFactExerciseRepo
 
         return mockRepo;
     }
+
+    public static Mock<ISingleFactExerciseRepository> GetById()
+    {
+        var exercise = SingleFactExerciseFixture.GetExercises()
+            .First(x => x.Id == SingleFactExerciseFixture.GetExerciseOneId());
+        var mockRepo = new Mock<ISingleFactExerciseRepository>();
+        mockRepo.Setup(x => x.GetByIdAsync(SingleFactExerciseFixture.GetExerciseOneId()))
+            .ReturnsAsync(exercise);
+
+        return mockRepo;
+    }
 }

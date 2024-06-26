@@ -47,4 +47,30 @@ public class MockSingleFactExerciseMapper
 
         return mockMapper;
     }
+
+    public static Mock<IMapper> GetMockMapperForGetSingleFactExerciseByIdTests()
+    {
+        var exercise = SingleFactExerciseFixture.GetExercises()
+            .First(x => x.Id == SingleFactExerciseFixture.GetExerciseOneId());
+        var facts = exercise.Facts.Select(x => new GetSingleFactByIdOutputDto
+        {
+            Id = x.Id,
+            SingleFactExerciseId = x.SingleFactExerciseId,
+            FactName = x.FactName,
+            FactType = x.FactType,
+            FactValue = x.FactValue,
+            AdditionalTags = x.AdditionalTags
+        }).ToList();
+        var dto = new GetSingleFactExerciseByIdOutputDto
+        {
+            Name = exercise.Name,
+            Id = exercise.Id,
+            Facts = facts
+        };
+        var mockMapper = new Mock<IMapper>();
+        mockMapper.Setup(x => x.Map<GetSingleFactExerciseByIdOutputDto>(It.IsAny<SingleFactExercise>()))
+            .Returns(dto);
+
+        return mockMapper;
+    }
 }
