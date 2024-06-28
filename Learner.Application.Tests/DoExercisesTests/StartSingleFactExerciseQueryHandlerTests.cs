@@ -23,6 +23,16 @@ namespace Learner.Application.Tests.DoExercisesTests
 
             result.ShouldBeOfType<StartSingleFactExerciseOutputDto>();
         }
+
+        [Fact]
+        public async Task Should_Return_Dto_With_Correct_Values()
+        {
+            var result = await _handler.Handle(_query, CancellationToken.None);
+            result.Id.ShouldBe(SingleFactExerciseFixture.GetExerciseOneId());
+            result.Facts.ShouldAllBe(x => x.FactValue == "");
+            result.Facts.ShouldAllBe(x => !string.IsNullOrEmpty(x.FactName));
+            result.ShouldNotBeNull();
+        }
     }
 
     public record StartSingleFactExerciseQuery(string Id) : IRequest<StartSingleFactExerciseOutputDto>;
