@@ -1,7 +1,7 @@
-﻿using Learner.Application.Contracts.Repos;
+﻿using Learner.Application.Features.DoFreeTextExercise.Queries.StartSingleFactExercise;
+using Learner.Application.Features.DoFreeTextExercise.Queries.StartSingleFactExercise.Dtos;
 using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
-using MediatR;
 using Shouldly;
 
 namespace Learner.Application.Tests.DoExercisesTests
@@ -33,52 +33,5 @@ namespace Learner.Application.Tests.DoExercisesTests
             result.Facts.ShouldAllBe(x => !string.IsNullOrEmpty(x.FactName));
             result.ShouldNotBeNull();
         }
-    }
-
-    public record StartSingleFactExerciseQuery(string Id) : IRequest<StartSingleFactExerciseOutputDto>;
-    
-
-    
-
-    public class StartSingleFactExerciseQueryHandler(ISingleFactExerciseRepository singleFactExerciseRepository) : IRequestHandler<StartSingleFactExerciseQuery, StartSingleFactExerciseOutputDto>
-    {
-        public async Task<StartSingleFactExerciseOutputDto> Handle(StartSingleFactExerciseQuery request, CancellationToken cancellationToken)
-        {
-            var exercise = await singleFactExerciseRepository.GetByIdAsync(request.Id);
-
-            if (exercise is null) throw new NullReferenceException();
-
-            var outputFactsWithoutAnswers = exercise.Facts.Select(x => new StartSingleFactExerciseFactOutputDto
-            {
-                Id = x.Id,
-                FactName = x.FactName,
-                FactType = x.FactType,
-                FactValue = "",
-                AdditionalTags = x.AdditionalTags
-            }).ToList();
-
-            return new StartSingleFactExerciseOutputDto
-            {
-                Id = exercise.Id,
-                Name = exercise.Name,
-                Facts = outputFactsWithoutAnswers
-            };
-        }
-    }
-
-    public class StartSingleFactExerciseOutputDto
-    {
-        public string Name { get; set; } = null!;
-        public string Id { get; set; } = null!;
-        public List<StartSingleFactExerciseFactOutputDto> Facts { get; set; } = [];
-
-    }
-    public class StartSingleFactExerciseFactOutputDto
-    {
-        public string Id { get; set; } = null!;
-        public string FactName { get; set; } = null!;
-        public string FactType { get; set; } = null!;
-        public string FactValue { get; set; } = null!;
-        public List<string> AdditionalTags { get; set; } = [];
     }
 }

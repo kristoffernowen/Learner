@@ -4,9 +4,9 @@ using Learner.Domain.Models;
 
 namespace Learner.Application.Helpers;
 
-public class SingleFactCompareAnswersUtility
+public static class SingleFactCompareAnswersUtility
 {
-    public bool AnswersAreEqual(string givenAnswer, BaseFact fact)
+    public static bool AnswersAreEqual(string givenAnswer, BaseFact fact)
     {
         var evaluator = GetAnswerEvaluator(fact.FactType);
         var result = evaluator.CheckIfAnswersAreEqual(givenAnswer, fact);
@@ -14,7 +14,7 @@ public class SingleFactCompareAnswersUtility
         return result;
     }
 
-    private AnswerEvaluator GetAnswerEvaluator(string factType)
+    private static AnswerEvaluator GetAnswerEvaluator(string factType)
     {
         factType = char.ToUpper(factType[0]) + factType[1..].ToLower();
         var evaluatorNamespace = typeof(AnswerEvaluator).Namespace;
