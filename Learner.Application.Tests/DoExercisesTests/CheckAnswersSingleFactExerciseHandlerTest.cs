@@ -1,8 +1,7 @@
-﻿using Learner.Application.Contracts.Repos;
-using Learner.Application.Helpers;
+﻿using Learner.Application.Features.DoFreeTextExercise.Commands.CheckSingleFactExerciseAnswers;
+using Learner.Application.Features.DoFreeTextExercise.Commands.CheckSingleFactExerciseAnswers.Dtos;
 using Learner.Application.Tests.Fixtures;
 using Learner.Application.Tests.Mocks;
-using MediatR;
 using Shouldly;
 
 namespace Learner.Application.Tests.DoExercisesTests
@@ -62,72 +61,11 @@ namespace Learner.Application.Tests.DoExercisesTests
                 var one = string.IsNullOrEmpty(eachResult.FactName);
                 var two = string.IsNullOrEmpty(eachResult.FactId);
                 var three = string.IsNullOrEmpty(eachResult.CorrectAnswer);
-                var list = new List<bool>() {one, two, three};
+                var list = new List<bool>() { one, two, three };
                 var result = list.Any(b => b);
 
                 result.ShouldBeFalse();
             }
         }
-    }
-
-    public class CheckAnswersSingleFactExerciseHandler(
-        ISingleFactExerciseRepository singleFactExerciseRepository
-        )
-        : IRequestHandler<CheckAnswersSingleFactExerciseQuery, CheckAnswersSingleFactExerciseResultOutputDto>
-    {
-
-        public async Task<CheckAnswersSingleFactExerciseResultOutputDto> Handle(CheckAnswersSingleFactExerciseQuery request, CancellationToken cancellationToken)
-        {
-            var exerciseWithRightAnswers = await singleFactExerciseRepository.GetByIdAsync(request.Id);
-            if (exerciseWithRightAnswers is null) throw new Exception("exercise must exist or some logic is faulty");
-
-            var outputDto = new CheckAnswersSingleFactExerciseResultOutputDto()
-            {
-                Id = exerciseWithRightAnswers.Id
-            };
-            foreach (var answer in request.AnswersPerFact)
-            {
-                var fact = exerciseWithRightAnswers?.Facts.First(x => x.Id == answer.Id);
-                if (fact == null) throw new Exception("no fact with id for answer");
-                var result = new CheckSingleFactExerciseResultPerFactOutputDto()
-                {
-                    FactName = fact.FactName,
-                    CorrectAnswer = fact.FactValue,
-                    FactId = fact.Id,
-                    GivenAnswer = answer.GivenAnswer
-                };
-                result.IsCorrect = SingleFactCompareAnswersUtility.AnswersAreEqual(answer.GivenAnswer, fact);
-                outputDto.Results.Add(result);
-            }
-
-            return outputDto;
-        }
-    }
-
-    public record CheckAnswersSingleFactExerciseQuery : IRequest<CheckAnswersSingleFactExerciseResultOutputDto>
-    {
-        public string Id { get; set; } = null!;
-        public List<CheckAnswersSingleFactExerciseFactInputDto> AnswersPerFact { get; set; } = null!;
-    }
-
-    public record CheckAnswersSingleFactExerciseFactInputDto
-    {
-        public string Id { get; set; } = null!;
-        public string GivenAnswer { get; set; } = null!;
-    }
-
-    public record CheckAnswersSingleFactExerciseResultOutputDto
-    {
-        public string Id { get; set; } = null!;
-        public List<CheckSingleFactExerciseResultPerFactOutputDto> Results { get; set; } = [];
-    }
-
-    public record CheckSingleFactExerciseResultPerFactOutputDto
-    {
-        public string FactId { get; set; } = null!;
-        public string FactName { get; set; } = null!;
-        public string GivenAnswer { get; set; } = null!;
-        public string CorrectAnswer { get; set; } = null!;
-        public bool IsCorrect { get; set; }
     }
 }
